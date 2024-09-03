@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  broker:
+    container_name: container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python app.py  # Comando para ejecutar tu script que encola trabajos
+    volumes:
+      - .:/code  # Montar el directorio actual para acceso al código
+    depends_on:
+      - redis  # Asegurarte de que Redis esté listo antes de ejecutar la app
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"  # Exponer Redis para que la app pueda conectarse
