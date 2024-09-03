@@ -11,7 +11,6 @@ class TestBroker(unittest.TestCase):
         # En este caso es un broker de mensajes
         self.redis_client = redis.Redis(host='localhost', port=6379, db=0)
     
-    @unittest.skip("Omit response queue test_message_handling")
     def test_message_handling(self):
         print("Entrando a test_message_handling")
         # Enviar un mensaje ala cola de mensajes
